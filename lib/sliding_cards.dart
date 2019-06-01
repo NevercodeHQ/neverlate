@@ -53,7 +53,9 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
     const duration = const Duration(milliseconds: 300);
     const curve = Curves.ease;
 
-    pageController.animateToPage(0, duration: duration, curve: curve);
+    if (pageController != null) {
+      pageController.animateToPage(0, duration: duration, curve: curve);
+    }
   }
 
   @override
