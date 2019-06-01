@@ -17,24 +17,23 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
   @override
   void initState() {
     super.initState();
-    const headers = [
-      {'header': 'The fighting deer didn\'t let me to cross the road.', 'assetName': '1.png'},
-      {'header': 'The police were arresting someone and I was taking a video for my youtube channel', 'assetName': '2.png'},
-      {'header': 'My pants were in the dryer', 'assetName': '3.png'},
-      {'header': 'Got lost trying to escape from police', 'assetName': '4.png'},
-      {'header': 'I thought it\'s Christmas now', 'assetName': '5.png'},
-      {'header': 'I got into a fight with the bus constructor. He wanted John Snow to be on the Iron Throne', 'assetName': '6.png'},
-      {'header': 'I smashed the alarm trying to kill a mosquito with a hammer', 'assetName': '7.png'},
-      {'header': 'Bohemian Rhapsody started playing on the radio. Then followed by Kashmir, Paradise City, and Piano Man', 'assetName': '8.png'},
-      {'header': 'I couldn\'t find my glasses. Then I realized that I don\'t have any', 'assetName': '9.png'},
-      {'header': 'Accidentally mixed sugar with a cocaine up and my morning coffee was a bit stronger than usually', 'assetName': '10.png'},
-    ];
+    final List headers = new List();
+    headers.add({'header': 'The fighting deer didn\'t let me to cross the road.', 'assetName': '1.png'});
+    headers.add({'header': 'The police were arresting someone and I was taking a video for my youtube channel', 'assetName': '2.png'});
+    headers.add({'header': 'My pants were in the dryer', 'assetName': '3.png'});
+    headers.add({'header': 'Got lost trying to escape from police', 'assetName': '4.png'});
+    headers.add({'header': 'I thought it\'s Christmas now', 'assetName': '5.png'});
+    headers.add({'header': 'I got into a fight with the bus constructor. He wanted John Snow to be on the Iron Throne', 'assetName': '6.png'});
+    headers.add({'header': 'I smashed the alarm trying to kill a mosquito with a hammer', 'assetName': '7.png'});
+    headers.add({'header': 'Bohemian Rhapsody started playing on the radio. Then followed by Kashmir, Paradise City, and Piano Man', 'assetName': '8.png'});
+    headers.add({'header': 'I couldn\'t find my glasses. Then I realized that I don\'t have any', 'assetName': '9.png'});
+    headers.add({'header': 'Accidentally mixed sugar with a cocaine up and my morning coffee was a bit stronger than usually', 'assetName': '10.png'});
+    headers.shuffle(math.Random.secure());
 
-    var random = math.Random.secure();
     setState(() {
-      card1 = headers[random.nextInt(10)];
-      card2 = headers[random.nextInt(10)];
-      card3 = headers[random.nextInt(10)];
+      card1 = headers[0];
+      card2 = headers[1];
+      card3 = headers[2];
     });
 
     pageController = PageController(viewportFraction: 0.8);
