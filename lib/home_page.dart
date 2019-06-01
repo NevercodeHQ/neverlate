@@ -40,3 +40,21 @@ class Header extends StatelessWidget {
     );
   }
 }
+
+
+
+class veryFirstPage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return new Material(
+      color: Colors.white,
+      child: new InkWell(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            new Text('\n Neverlate \n ', style : new TextStyle(color: Colors.black, fontSize : 50.0, fontWeight : FontWeight.bold))],
+        ),
+      ),
+    );
+  }
+}

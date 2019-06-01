@@ -175,7 +175,7 @@ class CardContent extends StatelessWidget {
         children: <Widget>[
           Transform.translate(
             offset: Offset(8 * offset, 0),
-            child: Text(header, style: TextStyle(fontSize: 20)),
+            child: Text(header, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
           SizedBox(height: 8),
           Transform.translate(
