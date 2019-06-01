@@ -31,7 +31,7 @@ class Header extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: Text(
-        '🤷‍♂️ Never Late 🤷‍♀',
+        '🤷‍♂️ Neverlate 🤷‍♀',
         style: TextStyle(
           fontSize: 22,
           fontWeight: FontWeight.w600,
