@@ -50,6 +50,10 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
       card2 = headers[1];
       card3 = headers[2];
     });
+    const duration = const Duration(milliseconds: 300);
+    const curve = Curves.ease;
+
+    pageController.animateToPage(0, duration: duration, curve: curve);
   }
 
   @override
