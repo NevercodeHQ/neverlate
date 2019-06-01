@@ -56,7 +56,7 @@ class _veryFirstPage extends State<veryFirstPage> {
   }
 
   void _sleep_sec() async {
-    await new Future.delayed(const Duration(seconds: 0.5));
+    await new Future.delayed(const Duration(milliseconds: 600));
     Navigator.of(context)
         .push(MaterialPageRoute<Null>(builder: (BuildContext context) {
       return new HomePage();
