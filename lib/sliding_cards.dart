@@ -13,30 +13,24 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
   var card1 = {};
   var card2 = {};
   var card3 = {};
+  final List headers = new List();
 
   @override
   void initState() {
     super.initState();
-    final List headers = new List();
     headers.add({'header': 'The fighting deer didn\'t let me to cross the road', 'assetName': '1.png'});
     headers.add({'header': 'The police were arresting someone and I was taking a video for my youtube channel', 'assetName': '2.png'});
     headers.add({'header': 'My pants were in the dryer', 'assetName': '3.png'});
     headers.add({'header': 'Got lost trying to escape from police', 'assetName': '4.png'});
     headers.add({'header': 'I thought it\'s Christmas now', 'assetName': '5.png'});
-    headers.add({'header': 'I got into a fight with the bus constructor. He wanted John Snow to be on the Iron Throne', 'assetName': '6.png'});
+    headers.add({'header': 'I got into a fight with the bus conductor. He wanted John Snow to be on the Iron Throne', 'assetName': '6.png'});
     headers.add({'header': 'I smashed the alarm trying to kill a mosquito with a hammer', 'assetName': '7.png'});
     headers.add({'header': 'Bohemian Rhapsody started playing on the radio. Then followed by Kashmir, Paradise City, and Piano Man', 'assetName': '8.png'});
     headers.add({'header': 'I couldn\'t find my glasses. Then I realized that I don\'t have any', 'assetName': '9.png'});
     headers.add({'header': 'Accidentally mixed sugar with a cocaine up and my morning coffee was a bit stronger than usually', 'assetName': '10.png'});
-    headers.shuffle(math.Random.secure());
+    shuffle();
 
-    setState(() {
-      card1 = headers[0];
-      card2 = headers[1];
-      card3 = headers[2];
-    });
-
-    pageController = PageController(viewportFraction: 0.8);
+    pageController = PageController(viewportFraction: 0.75);
     pageController.addListener(() {
       setState(() => pageOffset = pageController.page);
     });
@@ -48,34 +42,59 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
     super.dispose();
   }
 
+  void shuffle() {
+    headers.shuffle(math.Random.secure());
+
+    setState(() {
+      card1 = headers[0];
+      card2 = headers[1];
+      card3 = headers[2];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.80,
-      child: PageView(
-        controller: pageController,
-        children: <Widget>[
-          SlidingCard(
-            header: card1['header'],
-            subheader: '¯\\_(ツ)_/¯',
-            assetName: card1['assetName'],
-            offset: pageOffset,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.75,
+          child: PageView(
+            controller: pageController,
+            children: <Widget>[
+              SlidingCard(
+                header: card1['header'],
+                subheader: '¯\\_(ツ)_/¯',
+                assetName: card1['assetName'],
+                offset: pageOffset,
+              ),
+              SlidingCard(
+                header: card2['header'],
+                subheader: '¯\\_(ツ)_/¯',
+                assetName: card2['assetName'],
+                offset: pageOffset - 1,
+              ),
+              SlidingCard(
+                header: card3['header'],
+                subheader: '¯\\_(ツ)_/¯',
+                assetName: card3['assetName'],
+                offset: pageOffset - 2,
+              ),
+            ],
           ),
-          SlidingCard(
-            header: card2['header'],
-            subheader: '¯\\_(ツ)_/¯',
-            assetName: card2['assetName'],
-            offset: pageOffset - 1,
+        ),
+        SizedBox(height: 8),
+        RaisedButton(
+          color: Color(0xFFfebb00),
+          child: Text('Shuffle'),
+          textColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(32),
           ),
-          SlidingCard(
-            header: card3['header'],
-            subheader: '¯\\_(ツ)_/¯',
-            assetName: card3['assetName'],
-            offset: pageOffset - 2,
-          ),
-        ],
-      ),
+          onPressed: () { shuffle(); },
+        ),
+      ]
     );
   }
 }
@@ -160,28 +179,6 @@ class CardContent extends StatelessWidget {
               style: TextStyle(color: Colors.grey),
             ),
           ),
-          Spacer(),
-          Row(
-            children: <Widget>[
-              Spacer(),
-              Transform.translate(
-                offset: Offset(48 * offset, 0),
-                child: RaisedButton(
-                  color: Color(0xFFfebb00),
-                  child: Transform.translate(
-                    offset: Offset(24 * offset, 0),
-                    child: Text('Like'),
-                  ),
-                  textColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32),
-                  ),
-                  onPressed: () {},
-                ),
-              ),
-              SizedBox(width: 16),
-            ],
-          )
         ],
       ),
     );
