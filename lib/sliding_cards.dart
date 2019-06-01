@@ -160,6 +160,28 @@ class CardContent extends StatelessWidget {
               style: TextStyle(color: Colors.grey),
             ),
           ),
+          Spacer(),
+          Row(
+            children: <Widget>[
+              Spacer(),
+              Transform.translate(
+                offset: Offset(48 * offset, 0),
+                child: RaisedButton(
+                  color: Color(0xFFfebb00),
+                  child: Transform.translate(
+                    offset: Offset(24 * offset, 0),
+                    child: Text('Like'),
+                  ),
+                  textColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(32),
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+              SizedBox(width: 16),
+            ],
+          )
         ],
       ),
     );
