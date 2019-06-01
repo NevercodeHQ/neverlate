@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
@@ -11,10 +10,33 @@ class SlidingCardsView extends StatefulWidget {
 class _SlidingCardsViewState extends State<SlidingCardsView> {
   PageController pageController;
   double pageOffset = 0;
+  var card1 = {};
+  var card2 = {};
+  var card3 = {};
 
   @override
   void initState() {
     super.initState();
+    const headers = [
+      {'header': 'The fighting deer didn\'t let me to cross the road.', 'assetName': '1.png'},
+      {'header': 'The police were arresting someone and I was taking a video for my youtube channel', 'assetName': '2.png'},
+      {'header': 'My pants were in the dryer', 'assetName': '3.png'},
+      {'header': 'Got lost trying to escape from police', 'assetName': '4.png'},
+      {'header': 'I thought it\'s Christmas now', 'assetName': '5.png'},
+      {'header': 'I got into a fight with the bus constructor. He wanted John Snow to be on the Iron Throne', 'assetName': '6.png'},
+      {'header': 'I smashed the alarm trying to kill a mosquito with a hammer', 'assetName': '7.png'},
+      {'header': 'Bohemian Rhapsody started playing on the radio. Then followed by Kashmir, Paradise City, and Piano Man', 'assetName': '8.png'},
+      {'header': 'I couldn\'t find my glasses. Then I realized that I don\'t have any', 'assetName': '9.png'},
+      {'header': 'Accidentally mixed sugar with a cocaine up and my morning coffee was a bit stronger than usually', 'assetName': '10.png'},
+    ];
+
+    var random = math.Random.secure();
+    setState(() {
+      card1 = headers[random.nextInt(10)];
+      card2 = headers[random.nextInt(10)];
+      card3 = headers[random.nextInt(10)];
+    });
+
     pageController = PageController(viewportFraction: 0.8);
     pageController.addListener(() {
       setState(() => pageOffset = pageController.page);
@@ -29,17 +51,6 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
 
   @override
   Widget build(BuildContext context) {
-    const texts = [
-      'The fighting deer didn\'t let me to cross the road.',
-      'The police were arresting someone and I was taking a video for my youtube channel',
-      'My pants were in the dryer',
-      'Got lost trying to escape from police',
-      'I thought it\'s Christmas now',
-      'I got into a fight with the bus constructor. He wanted John Snow to be on the Iron Throne',
-      'I smashed the alarm trying to kill a mosquito with a hammer',
-      'Bohemian Rhapsody started playing on the radio. Then followed by Kashmir, Paradise City, and Piano Man',
-      'Accidentally mixed sugar with a cocaine up and my morning coffee was a bit stronger than usually',
-    ];
 
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.80,
@@ -47,64 +58,22 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
         controller: pageController,
         children: <Widget>[
           SlidingCard(
-            header: 'The fighting deer didn\'t let me to cross the road.',
-            subheader: '┬┴┬┴┤( ͡° ͜ʖ├┬┴┬┴',
-            assetName: '1.png',
+            header: card1['header'],
+            subheader: '¯\\_(ツ)_/¯',
+            assetName: card1['assetName'],
             offset: pageOffset,
           ),
           SlidingCard(
-            header: 'The police were arresting someone and I was taking a video for my youtube channel',
+            header: card2['header'],
             subheader: '¯\\_(ツ)_/¯',
-            assetName: '2.png',
+            assetName: card2['assetName'],
             offset: pageOffset - 1,
           ),
           SlidingCard(
-            header: 'My pants were in the dryer',
-            subheader: 'ʕ ᵔᴥᵔ ʔ',
-            assetName: '3.png',
+            header: card3['header'],
+            subheader: '¯\\_(ツ)_/¯',
+            assetName: card3['assetName'],
             offset: pageOffset - 2,
-          ),
-          SlidingCard(
-            header: 'Got lost trying to escape from police',
-            subheader: '( ╯°□°)╯ ┻━━┻',
-            assetName: '4.png',
-            offset: pageOffset - 3,
-          ),
-          SlidingCard(
-            header: 'I thought it\'s Christmas now',
-            subheader: '¯\\_(ツ)_/¯',
-            assetName: '5.png',
-            offset: pageOffset - 4,
-          ),
-          SlidingCard(
-            header: 'I got into a fight with the bus constructor. He wanted John Snow to be on the Iron Throne',
-            subheader: '(︶︹︺)',
-            assetName: '6.png',
-            offset: pageOffset - 5,
-          ),
-          SlidingCard(
-            header: 'I smashed the alarm trying to kill a mosquito with a hammer',
-            subheader: '¯\\_(ツ)_/¯',
-            assetName: '7.png',
-            offset: pageOffset - 6,
-          ),
-          SlidingCard(
-            header: 'Bohemian Rhapsody started playing on the radio. Then followed by Kashmir, Paradise City, and Piano Man',
-            subheader: '¯\\_(ツ)_/¯',
-            assetName: '8.png',
-            offset: pageOffset - 7,
-          ),
-          SlidingCard(
-            header: 'I couldn\'t find my glasses. Then I realized that I don\'t have any',
-            subheader: '¯\\_(ツ)_/¯',
-            assetName: '9.png',
-            offset: pageOffset - 8,
-          ),
-          SlidingCard(
-            header: 'Accidentally mixed sugar with a cocaine up and my morning coffee was a bit stronger than usually',
-            subheader: '(⌐■_■)',
-            assetName: '10.png',
-            offset: pageOffset - 9,
           ),
         ],
       ),
