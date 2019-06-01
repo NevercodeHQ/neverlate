@@ -18,7 +18,7 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
   void initState() {
     super.initState();
     final List headers = new List();
-    headers.add({'header': 'The fighting deer didn\'t let me to cross the road.', 'assetName': '1.png'});
+    headers.add({'header': 'The fighting deer didn\'t let me to cross the road', 'assetName': '1.png'});
     headers.add({'header': 'The police were arresting someone and I was taking a video for my youtube channel', 'assetName': '2.png'});
     headers.add({'header': 'My pants were in the dryer', 'assetName': '3.png'});
     headers.add({'header': 'Got lost trying to escape from police', 'assetName': '4.png'});
