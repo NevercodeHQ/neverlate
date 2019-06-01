@@ -29,6 +29,18 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
 
   @override
   Widget build(BuildContext context) {
+    const texts = [
+      'The fighting deer didn\'t let me to cross the road.',
+      'The police were arresting someone and I was taking a video for my youtube channel',
+      'My pants were in the dryer',
+      'Got lost trying to escape from police',
+      'I thought it\'s Christmas now',
+      'I got into a fight with the bus constructor. He wanted John Snow to be on the Iron Throne',
+      'I smashed the alarm trying to kill a mosquito with a hammer',
+      'Bohemian Rhapsody started playing on the radio. Then followed by Kashmir, Paradise City, and Piano Man',
+      'Accidentally mixed sugar with a cocaine up and my morning coffee was a bit stronger than usually',
+    ];
+
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.80,
       child: PageView(
@@ -37,62 +49,62 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
           SlidingCard(
             header: 'The fighting deer didn\'t let me to cross the road.',
             subheader: '┬┴┬┴┤( ͡° ͜ʖ├┬┴┬┴',
-            assetName: 'steve-johnson.jpeg',
+            assetName: '1.png',
             offset: pageOffset,
           ),
           SlidingCard(
             header: 'The police were arresting someone and I was taking a video for my youtube channel',
             subheader: '¯\\_(ツ)_/¯',
-            assetName: 'rodion-kutsaev.jpeg',
+            assetName: '2.png',
             offset: pageOffset - 1,
           ),
           SlidingCard(
             header: 'My pants were in the dryer',
             subheader: 'ʕ ᵔᴥᵔ ʔ',
-            assetName: 'rodion-kutsaev.jpeg',
+            assetName: '3.png',
             offset: pageOffset - 2,
           ),
           SlidingCard(
             header: 'Got lost trying to escape from police',
             subheader: '( ╯°□°)╯ ┻━━┻',
-            assetName: 'rodion-kutsaev.jpeg',
-            offset: pageOffset - 2,
+            assetName: '4.png',
+            offset: pageOffset - 3,
           ),
           SlidingCard(
             header: 'I thought it\'s Christmas now',
             subheader: '¯\\_(ツ)_/¯',
-            assetName: 'rodion-kutsaev.jpeg',
-            offset: pageOffset - 2,
+            assetName: '5.png',
+            offset: pageOffset - 4,
           ),
           SlidingCard(
             header: 'I got into a fight with the bus constructor. He wanted John Snow to be on the Iron Throne',
             subheader: '(︶︹︺)',
-            assetName: 'rodion-kutsaev.jpeg',
-            offset: pageOffset - 2,
+            assetName: '6.png',
+            offset: pageOffset - 5,
           ),
           SlidingCard(
             header: 'I smashed the alarm trying to kill a mosquito with a hammer',
             subheader: '¯\\_(ツ)_/¯',
-            assetName: 'rodion-kutsaev.jpeg',
-            offset: pageOffset - 2,
+            assetName: '7.png',
+            offset: pageOffset - 6,
           ),
           SlidingCard(
             header: 'Bohemian Rhapsody started playing on the radio. Then followed by Kashmir, Paradise City, and Piano Man',
             subheader: '¯\\_(ツ)_/¯',
-            assetName: 'rodion-kutsaev.jpeg',
-            offset: pageOffset - 2,
+            assetName: '8.png',
+            offset: pageOffset - 7,
           ),
           SlidingCard(
             header: 'I couldn\'t find my glasses. Then I realized that I don\'t have any',
             subheader: '¯\\_(ツ)_/¯',
-            assetName: 'rodion-kutsaev.jpeg',
-            offset: pageOffset - 2,
+            assetName: '9.png',
+            offset: pageOffset - 8,
           ),
           SlidingCard(
             header: 'Accidentally mixed sugar with a cocaine up and my morning coffee was a bit stronger than usually',
             subheader: '(⌐■_■)',
-            assetName: 'rodion-kutsaev.jpeg',
-            offset: pageOffset - 2,
+            assetName: '10.png',
+            offset: pageOffset - 9,
           ),
         ],
       ),
@@ -129,12 +141,12 @@ class SlidingCard extends StatelessWidget {
               borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
               child: Image.asset(
                 'assets/$assetName',
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: MediaQuery.of(context).size.height * 0.5,
                 alignment: Alignment(-offset.abs(), 0),
-                fit: BoxFit.none,
+                fit: BoxFit.fitHeight,
               ),
             ),
-            SizedBox(height: 200),
+            SizedBox(height: 8),
             Expanded(
               child: CardContent(
                 header: header,
