@@ -27,9 +27,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.7.0"
 
 flutter_icons:
-  image_path: "assets/images/hat_on.png"
+  image_path: "assets/images/icon.png"
   android: true
   ios: true
 
