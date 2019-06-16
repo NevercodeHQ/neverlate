@@ -27,10 +27,10 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
     headers.add({'header': 'I smashed the alarm trying to kill a mosquito with a hammer', 'assetName': '7.png'});
     headers.add({'header': 'Bohemian Rhapsody started playing on the radio. Then followed by Kashmir, Paradise City, and Piano Man', 'assetName': '8.png'});
     headers.add({'header': 'I couldn\'t find my glasses. Then I realized that I don\'t have any', 'assetName': '9.png'});
-    headers.add({'header': 'Accidentally mixed sugar with a cocaine up and my morning coffee was a bit stronger than usually', 'assetName': '10.png'});
+    headers.add({'header': 'Accidentally mixed sugar with cocaine up and my morning coffee was a bit stronger than usually', 'assetName': '10.png'});
     shuffle();
 
-    pageController = PageController(viewportFraction: 0.75);
+    pageController = PageController(viewportFraction: 0.8);
     pageController.addListener(() {
       setState(() => pageOffset = pageController.page);
     });
@@ -50,7 +50,7 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
       card2 = headers[1];
       card3 = headers[2];
     });
-    const duration = const Duration(milliseconds: 300);
+    const duration = const Duration(milliseconds: 400);
     const curve = Curves.ease;
 
     if (pageController != null) {
@@ -65,7 +65,7 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.75,
+          height: MediaQuery.of(context).size.height * 0.8,
           child: PageView(
             controller: pageController,
             children: <Widget>[
@@ -93,8 +93,11 @@ class _SlidingCardsViewState extends State<SlidingCardsView> {
         SizedBox(height: 8),
         RaisedButton(
           color: Color(0xFFfebb00),
-          child: Text('Shuffle'),
-          textColor: Colors.white,
+          child: new Text('Shuffle', style: new TextStyle(
+              fontFamily: 'ProximaNova',
+              color: Colors.white,
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold)),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(32),
           ),
@@ -125,16 +128,16 @@ class SlidingCard extends StatelessWidget {
     return Transform.translate(
       offset: Offset(-32 * gauss * offset.sign, 0),
       child: Card(
-        margin: EdgeInsets.only(top: 48, left: 8, right: 8, bottom: 24),
-        elevation: 8,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+        margin: EdgeInsets.only(top: 48, left: 20, right: 20, bottom: 24),
+        elevation: 9, //shadow around cards
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Column(
           children: <Widget>[
             ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
               child: Image.asset(
-                'assets/$assetName',
-                height: MediaQuery.of(context).size.height * 0.5,
+                'assets/images/$assetName',
+                height: MediaQuery.of(context).size.height * 0.4,
                 alignment: Alignment(-offset.abs(), 0),
                 fit: BoxFit.fitHeight,
               ),
@@ -169,20 +172,24 @@ class CardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Transform.translate(
-            offset: Offset(8 * offset, 0),
-            child: Text(header, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            offset: Offset(32 * offset, 0),
+            child: Text(header,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontFamily: 'ProximaNova',
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold)),
           ),
           SizedBox(height: 8),
           Transform.translate(
             offset: Offset(32 * offset, 0),
             child: Text(
               subheader,
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(fontFamily: 'ProximaNova', color: Colors.grey),
             ),
           ),
         ],
